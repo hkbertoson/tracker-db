@@ -2,6 +2,16 @@
 version: '3.1'
 
 services:
+  nextjs:
+    build: .
+    image: nextjs
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./next-app/src:/app/src
+      - ./next-app/public:/app/public
   db:
     image: mariadb
     restart: always
