@@ -5,12 +5,17 @@ export default async function handle(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const addRequests = await prisma.requests.create({
+	const {name, projectID, accountName, status, requestType, totalHours} =
+		req.body;
+	const result = await prisma.requests.create({
 		data: {
-			project_id: '1234',
-			name: 'Hunter',
+			name: name,
+			project_id: projectID,
+			account_name: accountName,
+			status: status,
+			request_type: requestType,
+			total_hours_spent: totalHours,
 		},
 	});
-	// const requests = await prisma.requests.findMany({});
-	res.json(addRequests);
+	res.json(result);
 }

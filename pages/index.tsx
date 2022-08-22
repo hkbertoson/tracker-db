@@ -43,7 +43,7 @@ function Home() {
 				</div>
 				<div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 mt-6  px-4 py-4 bg-white shadow-lg rounded-lg dark:bg-gray-800">
 					<h3 className="text-2xl sm:text-xl text-gray-700 font-semibold dark:text-white py-4">
-						<Link href="/add-request">
+						<Link href="/requests/add">
 							<button
 								type="button"
 								className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-auto transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
