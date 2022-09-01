@@ -3,7 +3,16 @@ import {useState, useEffect} from 'react';
 import {GetStaticProps} from 'next';
 import prisma from '../../lib/prisma';
 
-export const getStaticProps: GetStaticProps = async () => {
+// export const getStaticProps: GetStaticProps = async () => {
+// 	const data = await prisma.requests.findMany({});
+// 	return {
+// 		props: {
+// 			data,
+// 		},
+// 	};
+// };
+
+export const getServerSideProps = async () => {
 	const data = await prisma.requests.findMany({});
 	return {
 		props: {

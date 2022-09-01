@@ -13,7 +13,7 @@ const AddRequest = () => {
 	];
 
 	const statusTypes = [
-		{label: 'To be Started', value: 'To_Be_Started'},
+		{label: 'To be Started', value: 'To_be_Started'},
 		{label: 'Completed', value: 'Completed'},
 		{
 			label: 'Awaiting Customer Confirmation',

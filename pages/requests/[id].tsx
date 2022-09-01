@@ -142,21 +142,28 @@ export default function RequestPage({data}: any) {
 	);
 }
 
-export async function getStaticPaths() {
-	const data = await prisma.requests.findMany({});
-	const paths = data.map((request) => ({
-		params: {id: request.id.toString()},
-	}));
-	return {paths, fallback: false};
+// export async function getStaticPaths() {
+// 	const data = await prisma.requests.findMany({});
+// 	const paths = data.map((request) => ({
+// 		params: {id: request.id.toString()},
+// 	}));
+// 	return {paths, fallback: false};
+// }
+
+export async function getServerSideProps({params}: any) {
+	const data = await prisma.requests.findUnique({
+		where: {id: parseInt(params.id)},
+	});
+	return {props: {data}};
 }
 
-export async function getStaticProps({params}: any) {
-	const data = await prisma.requests.findUnique({
-		where: {id: Number(params.id)},
-	});
-	return {
-		props: {
-			data,
-		},
-	};
-}
+// export async function getStaticProps({params}: any) {
+// 	const data = await prisma.requests.findUnique({
+// 		where: {id: Number(params.id)},
+// 	});
+// 	return {
+// 		props: {
+// 			data,
+// 		},
+// 	};
+// }
