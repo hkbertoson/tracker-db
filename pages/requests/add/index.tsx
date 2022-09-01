@@ -1,26 +1,9 @@
 import React, {useState} from 'react';
-import {SelectChangeEventHandler} from '../../utils/types';
+import {requestTypes, statusTypes} from '../../../utils/types';
+import {SelectChangeEventHandler} from '../../../utils/types';
 import Router from 'next/router';
 
-interface A {}
-
 const AddRequest = () => {
-	const requestTypes = [
-		{label: 'Rem', value: 'Rem'},
-		{label: 'Add On', value: 'Add_on'},
-		{label: 'Migration', value: 'Migration'},
-		{label: 'New Logo', value: 'New_Logo'},
-	];
-
-	const statusTypes = [
-		{label: 'To be Started', value: 'To_be_Started'},
-		{label: 'Completed', value: 'Completed'},
-		{
-			label: 'Awaiting Customer Confirmation',
-			value: 'Awaiting_Customer_Confirmation',
-		},
-		{label: 'Work in Progress', value: 'Work_in_Progress'},
-	];
 	const [name, setName] = useState<string>('');
 	const [projectID, setProjectID] = useState<string>('');
 	const [accountName, setAccountName] = useState<string>('');

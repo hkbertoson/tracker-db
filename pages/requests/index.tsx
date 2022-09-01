@@ -1,16 +1,5 @@
 import Link from 'next/link';
-import {useState, useEffect} from 'react';
-import {GetStaticProps} from 'next';
 import prisma from '../../lib/prisma';
-
-// export const getStaticProps: GetStaticProps = async () => {
-// 	const data = await prisma.requests.findMany({});
-// 	return {
-// 		props: {
-// 			data,
-// 		},
-// 	};
-// };
 
 export const getServerSideProps = async () => {
 	const data = await prisma.requests.findMany({});
@@ -40,7 +29,7 @@ export default function RequestPage({data}: any) {
 						{data.map((request: any) => (
 							<tr key={request.id}>
 								<td>
-									<Link href={`/requests/${request.id}`}>
+									<Link href={`/requests/update/${request.id}`}>
 										<a>View</a>
 									</Link>
 								</td>

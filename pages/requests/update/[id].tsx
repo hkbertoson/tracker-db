@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma';
+import prisma from '../../../lib/prisma';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
