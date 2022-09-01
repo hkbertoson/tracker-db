@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-export default function RequestPage({data}) {
+export default function RequestPage({data}: any) {
 	const {data: defaultData = []} = data;
 	console.log(data);
 	const [requests, setRequest] = useState([]);
