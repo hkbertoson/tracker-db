@@ -1,17 +1,24 @@
 import Link from 'next/link';
-
+import {useEffect} from 'react';
+import {themeChange} from 'theme-change';
 function Home() {
+	useEffect(() => {
+		themeChange(false);
+	}, []);
 	return (
 		<>
 			<h1 className="text-6xl flex justify-center">Request Tracking Page</h1>
+			<select data-choose-theme>
+				<option value="">Default</option>
+				<option value="dark">Dark</option>
+				<option value="pink">Pink</option>
+			</select>
 
 			<div className="sm:flex flex-wrap justify-center items-center text-center gap-8">
 				<div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 bg-white mt-6  shadow-lg rounded-lg dark:bg-gray-800">
 					<h3 className="text-2xl sm:text-xl text-gray-700 font-semibold dark:text-white py-4">
 						<Link href="/requests">
-							<button
-								type="button"
-								className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-auto transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+							<button type="button" className="btn btn-primary">
 								View Requests
 							</button>
 						</Link>
@@ -22,14 +29,12 @@ function Home() {
 						cumque quidem voluptates iste sint delectus impedit soluta,
 						doloribus numquam reiciendis reprehenderit.
 					</p>
+					b
 				</div>
 				<div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-4 py-4 mt-6 sm:mt-16 md:mt-20 lg:mt-24 bg-white shadow-lg rounded-lg dark:bg-gray-800">
 					<h3 className="text-2xl sm:text-xl text-gray-700 font-semibold dark:text-white py-4">
 						<Link href="/requests">
-							<button
-								type="button"
-								className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-auto transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
-								disabled>
+							<button type="button" className="btn btn-primary" disabled>
 								Update Request
 							</button>
 						</Link>
@@ -44,9 +49,7 @@ function Home() {
 				<div className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 mt-6  px-4 py-4 bg-white shadow-lg rounded-lg dark:bg-gray-800">
 					<h3 className="text-2xl sm:text-xl text-gray-700 font-semibold dark:text-white py-4">
 						<Link href="/requests/add">
-							<button
-								type="button"
-								className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-auto transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+							<button type="button" className="btn btn-primary">
 								Add New Request
 							</button>
 						</Link>

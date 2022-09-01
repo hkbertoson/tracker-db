@@ -2,7 +2,6 @@ import Link from 'next/link';
 import {useState, useEffect} from 'react';
 import {GetStaticProps} from 'next';
 import prisma from '../../lib/prisma';
-import superjson from 'superjson';
 
 export const getStaticProps: GetStaticProps = async () => {
 	const data = await prisma.requests.findMany({});
