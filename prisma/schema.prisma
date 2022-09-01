@@ -1,11 +1,12 @@
 generator client {
-  provider = "prisma-client-js"
-  binaryTargets = ["native", "darwin"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL_PROD")
+  referentialIntegrity = "prisma"
 }
 
 model requests {
@@ -17,7 +18,6 @@ model requests {
   legacy_org        requests_legacy_org?
   total_hours_spent Int?
   status            requests_status?
-  updated_on        DateTime?              @default(now()) @db.DateTime(0)
   comment           String?                @db.Text
 }
 

@@ -13,66 +13,38 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function RequestPage({data}: any) {
-	const {data: defaultData = []} = data;
 	console.log(data);
-	const [requests, setRequest] = useState([]);
-
-	let statusClass: string;
-	let wipClass;
-	const doneClass = 'bg-green-400';
-	const awaitClass = 'bg-amber-300';
-
-	// useEffect(() => {
-	// 	const fetchRequests = async () => {
-	// 		const res = await fetch('/api/requests');
-	// 		const data = await res.json();
-	// 		console.log(data);
-	// 		setRequest(data);
-	// 	};
-	// 	fetchRequests();
-	// }, [setRequest]);
-
 	return (
 		<>
-			<div className="container mx-auto px-4 sm:px-8 max-w-3xl">
-				<div className="py-8">
-					<h2 className="text-2xl leading-tight">Requests</h2>
-					<div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-						<div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
-							<table className="min-w-full leading-normal">
-								<thead>
-									<tr>
-										<th
-											scope="col"
-											className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-											Project ID
-										</th>
-										<th
-											scope="col"
-											className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-											Name
-										</th>
-										<th
-											scope="col"
-											className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-											Account Name
-										</th>
-										<th
-											scope="col"
-											className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-											Status
-										</th>
-										<th
-											scope="col"
-											className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"></th>
-									</tr>
-								</thead>
-							</table>
-						</div>
-					</div>
-				</div>
+			<h1 className="text-center text-4xl">Requests</h1>
+			<div className="overflow-x-auto">
+				<table className="table w-full">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Name</th>
+							<th>Project ID</th>
+							<th>Account Name</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						{data.map((request: any) => (
+							<tr key={request.id}>
+								<td>
+									<Link href={`/requests/${request.id}`}>
+										<a>View</a>
+									</Link>
+								</td>
+								<td>{request.name}</td>
+								<td>{request.project_id}</td>
+								<td>{request.account_name}</td>
+								<td>{request.status}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
-			;
 		</>
 	);
 }
