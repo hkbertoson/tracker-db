@@ -72,7 +72,6 @@ const AddRequest = () => {
 							className="input input-bordered w-full"
 							type="text"
 							placeholder="Name"
-							// value={name}
 							onChange={(e) => {
 								setName(e.target.value);
 							}}
@@ -84,7 +83,6 @@ const AddRequest = () => {
 							onChange={(e) => {
 								setProjectID(e.target.value);
 							}}
-							// value={projectID}
 						/>
 						<input
 							className="input input-bordered w-full"
@@ -93,19 +91,16 @@ const AddRequest = () => {
 							onChange={(e) => {
 								setAccountName(e.target.value);
 							}}
-							// value={accountName}
 						/>
 						<input
 							className="input input-bordered w-full"
 							type="number"
 							placeholder="Total Hours Worked"
 							onChange={updateHours}
-							// value={totalHours}
 						/>
 						<label>
 							Request Type:
 							<select
-								// value={requestType}
 								onChange={updateRequest}
 								className="select w-full max-w-xs">
 								{requestTypes.map((type) => (

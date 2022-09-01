@@ -5,9 +5,13 @@ export default async function handle(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const requestID = req.query.id as any;
+	const requestID = req.query.id;
+	const ID = Number(requestID);
 	const request = await prisma.requests.update({
-		where: {id: requestID},
-		data: {},
+		where: {id: ID},
+		data: {
+			...req.body,
+		},
 	});
+	res.status(200).json(request);
 }

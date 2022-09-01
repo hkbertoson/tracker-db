@@ -13,7 +13,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function RequestPage({data}: any) {
-	console.log(data);
 	return (
 		<>
 			<h1 className="text-center text-4xl">Requests</h1>

@@ -1,5 +1,6 @@
 import prisma from '../../lib/prisma';
 import Link from 'next/link';
+import Router from 'next/router';
 import {useState} from 'react';
 
 export default function RequestPage({data}: any) {
@@ -20,11 +21,12 @@ export default function RequestPage({data}: any) {
 		{label: 'Work in Progress', value: 'Work_in_Progress'},
 	];
 	const [name, setName] = useState(data.name);
-	const [projectID, setProjectID] = useState(data.project_id);
-	const [accountName, setAccountName] = useState(data.account_name);
+	const [project_id, setProjectID] = useState(data.project_id);
+	const [account_name, setAccountName] = useState(data.account_name);
 	const [status, setStatus] = useState(data.status);
-	const [requestType, setRequestType] = useState(data.request_type);
-	const [totalHours, setTotalHours] = useState(data.total_hours);
+	const [request_type, setRequestType] = useState(data.request_type);
+	const [total_hours_spent, setTotalHours] = useState(data.total_hours_spent);
+	const requestID = data.id;
 
 	const updateRequest = (event: any) => {
 		setRequestType(event.currentTarget.value);
@@ -33,28 +35,33 @@ export default function RequestPage({data}: any) {
 	const updateStatus = (event: any) => {
 		setStatus(event.currentTarget.value);
 	};
-	// const submitData = async (e: any) => {
-	// 	e.preventDefault();
-	// 	try {
-	// 		const data = {
-	// 			name,
-	// 			projectID,
-	// 			accountName,
-	// 			status,
-	// 			requestType,
-	// 			totalHours,
-	// 		};
-	// 		await fetch('/api/requests/add', {
-	// 			method: 'POST',
-	// 			headers: {'Content-Type': 'application/json'},
-	// 			body: JSON.stringify(data),
-	// 		});
-	// 		await Router.push('/requests');
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// };
-	console.log(data);
+
+	const updateHours = (e: any) => {
+		setTotalHours(parseInt(e.currentTarget.value));
+	};
+
+	const submitData = async (e: any) => {
+		e.preventDefault();
+		try {
+			const data = {
+				name,
+				project_id,
+				account_name,
+				status,
+				request_type,
+				total_hours_spent,
+			};
+			await fetch(`/api/requests/update/${requestID}`, {
+				method: 'PUT',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(data),
+			});
+			await Router.push('/requests');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
 		<>
 			<h1 className="text-center text-4xl">Request: {data.project_id}</h1>
@@ -64,7 +71,7 @@ export default function RequestPage({data}: any) {
 						className="input input-bordered w-full"
 						type="text"
 						placeholder="Name"
-						value={data.name}
+						value={name}
 						onChange={(e) => {
 							setName(e.target.value);
 						}}
@@ -76,7 +83,7 @@ export default function RequestPage({data}: any) {
 						onChange={(e) => {
 							setProjectID(e.target.value);
 						}}
-						value={data.project_id}
+						value={project_id}
 					/>
 					<input
 						className="input input-bordered w-full"
@@ -85,21 +92,19 @@ export default function RequestPage({data}: any) {
 						onChange={(e) => {
 							setAccountName(e.target.value);
 						}}
-						value={data.account_name}
+						value={account_name}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
 						placeholder="Total Hours Worked"
-						onChange={(e) => {
-							setTotalHours(e.target.value);
-						}}
-						value={data.total_hours}
+						onChange={updateHours}
+						value={total_hours_spent}
 					/>
 					<label>
 						Request Type:
 						<select
-							value={requestType}
+							value={request_type}
 							onChange={updateRequest}
 							className="select w-full max-w-xs">
 							{requestTypes.map((type) => (
@@ -122,7 +127,10 @@ export default function RequestPage({data}: any) {
 							))}
 						</select>
 					</label>
-					<button className="btn btn-primary" type="submit">
+					<button
+						className="btn btn-primary"
+						type="submit"
+						onClick={submitData}>
 						Update
 					</button>
 				</div>
