@@ -13,7 +13,7 @@ export const requestTypes = [
 ];
 
 export const statusTypes = [
-	{label: 'To be Started', value: 'To_be_Started'},
+	{label: 'To be Started', value: 'To_Be_Started'},
 	{label: 'Completed', value: 'Completed'},
 	{
 		label: 'Awaiting Customer Confirmation',
@@ -21,3 +21,11 @@ export const statusTypes = [
 	},
 	{label: 'Work in Progress', value: 'Work_in_Progress'},
 ];
+
+export interface RequestData {
+	id: number;
+	name: string;
+	project_id: string;
+	account_name: string;
+	status: string;
+}

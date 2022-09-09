@@ -8,11 +8,6 @@ function Home() {
 	return (
 		<>
 			<h1 className="text-6xl flex justify-center">Request Tracking Page</h1>
-			{/* <select data-choose-theme>
-				<option value="">Default</option>
-				<option value="dark">Dark</option>
-				<option value="pink">Pink</option>
-			</select> */}
 			<div className="flex w-full mt-5">
 				<div className="grid h-20 flex-grow card bg-base-300 rounded-box place-items-center">
 					<Link href="/requests">

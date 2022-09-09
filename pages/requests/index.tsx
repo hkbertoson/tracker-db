@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import prisma from '../../lib/prisma';
+import {FaEye, FaEdit} from 'react-icons/fa';
+import {RequestData} from '../../utils/types';
 
 export const getServerSideProps = async () => {
 	const data = await prisma.requests.findMany({});
@@ -11,6 +13,7 @@ export const getServerSideProps = async () => {
 };
 
 export default function RequestPage({data}: any) {
+	console.log(data);
 	return (
 		<>
 			<h1 className="text-center text-4xl">Requests</h1>
@@ -26,17 +29,24 @@ export default function RequestPage({data}: any) {
 						</tr>
 					</thead>
 					<tbody>
-						{data.map((request: any) => (
+						{data.map((request: RequestData) => (
 							<tr key={request.id}>
 								<td>
 									<Link href={`/requests/update/${request.id}`}>
-										<a>View</a>
+										<a>
+											<FaEdit />
+										</a>
+									</Link>
+									<Link href={`/requests/view/${request.id}`}>
+										<a>
+											<FaEye />
+										</a>
 									</Link>
 								</td>
 								<td>{request.name}</td>
 								<td>{request.project_id}</td>
 								<td>{request.account_name}</td>
-								<td>{request.status}</td>
+								<td>{request.status.replace(/_/g, ' ')}</td>
 							</tr>
 						))}
 					</tbody>
