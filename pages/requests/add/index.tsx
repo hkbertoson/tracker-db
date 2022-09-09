@@ -1,18 +1,30 @@
 import React, {useState} from 'react';
+import {FaPlus} from 'react-icons/fa';
 import {requestTypes, statusTypes} from '../../../utils/types';
 import {SelectChangeEventHandler} from '../../../utils/types';
 import Router from 'next/router';
 
 const AddRequest = () => {
-	const [name, setName] = useState<string>('');
-	const [projectID, setProjectID] = useState<string>('');
-	const [accountName, setAccountName] = useState<string>('');
-	const [status, setStatus] = useState<string>('');
-	const [requestType, setRequestType] = useState<string>('');
-	const [totalHours, setTotalHours] = useState<number>(0);
+	const [name, setName] = useState('');
+	const [projectID, setProjectID] = useState('');
+	const [accountName, setAccountName] = useState('');
+	const [status, setStatus] = useState('');
+	const [requestType, setRequestType] = useState('');
+	const [totalHours, setTotalHours] = useState(0);
 
 	const submitData = async (e: any) => {
 		e.preventDefault();
+		if (
+			!name ||
+			!projectID ||
+			!accountName ||
+			!status ||
+			!requestType ||
+			!totalHours
+		) {
+			alert('Please fill in all fields');
+			return;
+		}
 		try {
 			const data = {
 				name,
@@ -105,12 +117,7 @@ const AddRequest = () => {
 								))}
 							</select>
 						</label>
-						<button
-							className="btn btn-primary"
-							disabled={
-								!name || !projectID || !accountName || !status || !requestType
-							}
-							type="submit">
+						<button className="btn btn-primary" type="submit">
 							Add
 						</button>
 					</div>

@@ -1,25 +1,26 @@
 import prisma from '../../../lib/prisma';
+import {requestTypes, statusTypes} from '../../../utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
 
 export default function RequestPage({data}: any) {
-	const requestTypes = [
-		{label: 'Rem', value: 'Rem'},
-		{label: 'Add On', value: 'Add_On'},
-		{label: 'Migration', value: 'Migration'},
-		{label: 'New Logo', value: 'New_Logo'},
-	];
+	// const requestTypes = [
+	// 	{label: 'Rem', value: 'Rem'},
+	// 	{label: 'Add On', value: 'Add_On'},
+	// 	{label: 'Migration', value: 'Migration'},
+	// 	{label: 'New Logo', value: 'New_Logo'},
+	// ];
 
-	const statusTypes = [
-		{label: 'To be Started', value: 'To_be_Started'},
-		{label: 'Completed', value: 'Completed'},
-		{
-			label: 'Awaiting Customer Confirmation',
-			value: 'Awaiting_Customer_Confirmation',
-		},
-		{label: 'Work in Progress', value: 'Work_in_Progress'},
-	];
+	// const statusTypes = [
+	// 	{label: 'To be Started', value: 'To_be_Started'},
+	// 	{label: 'Completed', value: 'Completed'},
+	// 	{
+	// 		label: 'Awaiting Customer Confirmation',
+	// 		value: 'Awaiting_Customer_Confirmation',
+	// 	},
+	// 	{label: 'Work in Progress', value: 'Work_in_Progress'},
+	// ];
 	const [name, setName] = useState(data.name);
 	const [project_id, setProjectID] = useState(data.project_id);
 	const [account_name, setAccountName] = useState(data.account_name);
