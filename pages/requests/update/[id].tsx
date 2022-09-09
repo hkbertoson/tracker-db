@@ -5,22 +5,6 @@ import Router from 'next/router';
 import {useState} from 'react';
 
 export default function RequestPage({data}: any) {
-	// const requestTypes = [
-	// 	{label: 'Rem', value: 'Rem'},
-	// 	{label: 'Add On', value: 'Add_On'},
-	// 	{label: 'Migration', value: 'Migration'},
-	// 	{label: 'New Logo', value: 'New_Logo'},
-	// ];
-
-	// const statusTypes = [
-	// 	{label: 'To be Started', value: 'To_be_Started'},
-	// 	{label: 'Completed', value: 'Completed'},
-	// 	{
-	// 		label: 'Awaiting Customer Confirmation',
-	// 		value: 'Awaiting_Customer_Confirmation',
-	// 	},
-	// 	{label: 'Work in Progress', value: 'Work_in_Progress'},
-	// ];
 	const [name, setName] = useState(data.name);
 	const [project_id, setProjectID] = useState(data.project_id);
 	const [account_name, setAccountName] = useState(data.account_name);
@@ -142,29 +126,9 @@ export default function RequestPage({data}: any) {
 		</>
 	);
 }
-
-// export async function getStaticPaths() {
-// 	const data = await prisma.requests.findMany({});
-// 	const paths = data.map((request) => ({
-// 		params: {id: request.id.toString()},
-// 	}));
-// 	return {paths, fallback: false};
-// }
-
 export async function getServerSideProps({params}: any) {
 	const data = await prisma.requests.findUnique({
 		where: {id: parseInt(params.id)},
 	});
 	return {props: {data}};
 }
-
-// export async function getStaticProps({params}: any) {
-// 	const data = await prisma.requests.findUnique({
-// 		where: {id: Number(params.id)},
-// 	});
-// 	return {
-// 		props: {
-// 			data,
-// 		},
-// 	};
-// }

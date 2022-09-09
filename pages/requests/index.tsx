@@ -3,17 +3,7 @@ import prisma from '../../lib/prisma';
 import {FaEye, FaEdit} from 'react-icons/fa';
 import {RequestData} from '../../utils/types';
 
-export const getServerSideProps = async () => {
-	const data = await prisma.requests.findMany({});
-	return {
-		props: {
-			data,
-		},
-	};
-};
-
 export default function RequestPage({data}: any) {
-	console.log(data);
 	return (
 		<>
 			<h1 className="text-center text-4xl">Requests</h1>
@@ -55,3 +45,12 @@ export default function RequestPage({data}: any) {
 		</>
 	);
 }
+
+export const getServerSideProps = async () => {
+	const data = await prisma.requests.findMany({});
+	return {
+		props: {
+			data,
+		},
+	};
+};

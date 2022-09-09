@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {FaPlus} from 'react-icons/fa';
 import {requestTypes, statusTypes} from '../../../utils/types';
 import {SelectChangeEventHandler} from '../../../utils/types';
 import Router from 'next/router';
