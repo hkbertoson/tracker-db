@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider             = "mysql"
-  url                  = env("DATABASE_URL_PROD")
+  url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
@@ -19,6 +19,17 @@ model requests {
   total_hours_spent Int?
   status            requests_status?
   comment           String?                @db.Text
+}
+
+model users {
+  id            Int     @id @default(autoincrement())
+  name          String  @db.VarChar(255)
+  email         String  @db.VarChar(255)
+  eid           String  @db.VarChar(255)
+  legacy_org    String  @db.VarChar(11)
+  cost_center   String? @db.VarChar(255)
+  profit_center String? @db.VarChar(255)
+  phone_number  String? @db.VarChar(255)
 }
 
 enum requests_request_type {
