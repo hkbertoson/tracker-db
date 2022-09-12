@@ -1,5 +1,5 @@
 import prisma from '../../../lib/prisma';
-import {requestTypes, statusTypes} from '../../../utils/types';
+import {requestValues, statusValues} from '../../../utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
@@ -94,7 +94,7 @@ export default function RequestPage({data}: any) {
 							value={request_type}
 							onChange={updateRequest}
 							className="select w-full max-w-xs">
-							{requestTypes.map((type) => (
+							{requestValues.map((type) => (
 								<option key={type.value} value={type.value}>
 									{type.label}
 								</option>
@@ -107,7 +107,7 @@ export default function RequestPage({data}: any) {
 							value={status}
 							onChange={updateStatus}
 							className="select w-full max-w-xs">
-							{statusTypes.map((type) => (
+							{statusValues.map((type) => (
 								<option key={type.value} value={type.value}>
 									{type.label}
 								</option>
