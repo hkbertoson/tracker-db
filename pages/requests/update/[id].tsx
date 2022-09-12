@@ -64,7 +64,7 @@ export default function RequestPage({data}: any) {
 						}}
 					/>
 					<input
-						className="input input-bordered w-full"
+						className="input w-full max-w-xs"
 						type="text"
 						placeholder="Project ID"
 						onChange={(e) => {
@@ -114,16 +114,18 @@ export default function RequestPage({data}: any) {
 							))}
 						</select>
 					</label>
+				</div>
+				<div className="flex items-center">
 					<button
 						className="btn btn-primary"
 						type="submit"
 						onClick={submitData}>
 						Update
 					</button>
+					<Link href="/requests">
+						<a className="btn btn-accent">Back</a>
+					</Link>
 				</div>
-				<Link href="/requests">
-					<a className="text-2xl btn btn-accent">Back</a>
-				</Link>
 			</div>
 		</>
 	);

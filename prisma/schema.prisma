@@ -2,6 +2,7 @@ generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
 }
+
 datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
@@ -9,15 +10,17 @@ datasource db {
 }
 
 model requests {
-  id                Int                    @id @default(autoincrement())
-  project_id        String                 @db.VarChar(255)
-  request_type      requests_request_type?
-  name              String?                @db.VarChar(255)
-  account_name      String?                @db.VarChar(255)
+  id                Int                  @id @default(autoincrement())
+  project_id        String               @db.VarChar(255)
+  request_type      String               @db.VarChar(255)
+  name              String?              @db.VarChar(255)
+  account_name      String?              @db.VarChar(255)
   legacy_org        requests_legacy_org?
   total_hours_spent Int?
-  status            String                 @db.VarChar(255)
-  comment           String?                @db.Text
+  status            String               @db.VarChar(255)
+  comment           String?              @db.Text
+  last_updated      DateTime?            @default(now()) @db.DateTime(0)
+  created_at        DateTime?            @default(now()) @db.DateTime(0)
 }
 
 model users {
@@ -31,21 +34,7 @@ model users {
   phone_number  String? @db.VarChar(255)
 }
 
-enum requests_request_type {
-  Rem
-  Add_on    @map("Add on")
-  New_Logo  @map("New Logo")
-  Migration
-}
-
 enum requests_legacy_org {
   CSC
   ES
 }
-
-// enum requests_status {
-//   To_be_Started                  @map("To be Started")
-//   Work_in_Progress               @map("Work in Progress")
-//   Awaiting_Customer_Confirmation @map("Awaiting Customer Confirmation")
-//   Completed
-// }
