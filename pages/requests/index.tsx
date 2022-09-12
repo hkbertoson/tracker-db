@@ -6,7 +6,10 @@ import {RequestData} from '../../utils/types';
 export default function RequestPage({data}: any) {
 	return (
 		<>
-			<h1 className="text-center text-4xl">Requests</h1>
+			<h1 className="text-center text-4xl">
+				<Link href="/">Requests</Link>
+			</h1>
+
 			<div className="overflow-x-auto">
 				<table className="table w-full">
 					<thead>

@@ -1,10 +1,5 @@
 import Link from 'next/link';
-import {useEffect} from 'react';
-import {themeChange} from 'theme-change';
 function Home() {
-	useEffect(() => {
-		themeChange(false);
-	}, []);
 	return (
 		<>
 			<h1 className="text-6xl flex justify-center">Request Tracking Page</h1>

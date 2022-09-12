@@ -49,7 +49,9 @@ export default function RequestPage({data}: any) {
 
 	return (
 		<>
-			<h1 className="text-center text-4xl">Request: {data.project_id}</h1>
+			<h1 className="text-center text-4xl">
+				<Link href="/">{data.project_id}</Link>
+			</h1>
 			<div className="flex flex-col items-center">
 				<div className="text-center grid grid-cols-2 gap-3">
 					<input

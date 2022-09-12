@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {requestTypes, statusTypes} from '../../../utils/types';
 import {SelectChangeEventHandler} from '../../../utils/types';
 import Router from 'next/router';
+import Link from 'next/link';
 
 const AddRequest = () => {
 	const [name, setName] = useState('');
@@ -58,9 +59,11 @@ const AddRequest = () => {
 
 	return (
 		<>
-			<div className="container flex-auto">
+			<h1 className="text-3xl text-center">
+				<Link href="/">New Request</Link>
+			</h1>
+			<div className="m-auto">
 				<form onSubmit={submitData}>
-					<h1 className="text-3xl text-center">New Request</h1>
 					<div className="text-center grid grid-cols-2 gap-3">
 						<input
 							className="input input-bordered w-full"

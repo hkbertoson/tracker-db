@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider             = "mysql"
-  url                  = env("DATABASE_URL_PROD")
+  url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
@@ -17,7 +17,7 @@ model requests {
   account_name      String?                @db.VarChar(255)
   legacy_org        requests_legacy_org?
   total_hours_spent Int?
-  status            requests_status?
+  status            String                 @db.VarChar(255)
   comment           String?                @db.Text
 }
 
@@ -44,9 +44,9 @@ enum requests_legacy_org {
   ES
 }
 
-enum requests_status {
-  To_be_Started                  @map("To be Started")
-  Work_in_Progress               @map("Work in Progress")
-  Awaiting_Customer_Confirmation @map("Awaiting Customer Confirmation")
-  Completed
-}
+// enum requests_status {
+//   To_be_Started                  @map("To be Started")
+//   Work_in_Progress               @map("Work in Progress")
+//   Awaiting_Customer_Confirmation @map("Awaiting Customer Confirmation")
+//   Completed
+// }
