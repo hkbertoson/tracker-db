@@ -5,14 +5,14 @@ export type TextareaChangeEventHandler =
 export type SelectChangeEventHandler =
 	React.ChangeEventHandler<HTMLSelectElement>;
 
-export const requestTypes = [
-	{label: 'Rem', value: 'Rem'},
+export const requestValues = [
+	{value: 'Rem', label: 'Rem'},
 	{label: 'Add On', value: 'Add on'},
 	{label: 'Migration', value: 'Migration'},
 	{label: 'New Logo', value: 'New Logo'},
 ];
 
-export const statusTypes = [
+export const statusValues = [
 	{label: 'To be Started', value: 'To Be Started'},
 	{label: 'Completed', value: 'Completed'},
 	{
@@ -28,4 +28,8 @@ export interface RequestData {
 	project_id: string;
 	account_name: string;
 	status: string;
+}
+
+export interface RequestData {
+	value: string;
 }

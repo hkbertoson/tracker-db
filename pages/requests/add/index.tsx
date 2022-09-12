@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
-import {requestTypes, statusTypes} from '../../../utils/types';
-import {SelectChangeEventHandler} from '../../../utils/types';
+import {
+	requestValues,
+	statusValues,
+	SelectChangeEventHandler,
+} from '../../../utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
 
@@ -45,12 +48,12 @@ const AddRequest = () => {
 		}
 	};
 
-	const updateRequest: SelectChangeEventHandler = (event) => {
-		setRequestType(event.currentTarget.value);
-	};
-
 	const updateStatus: SelectChangeEventHandler = (event) => {
 		setStatus(event.currentTarget.value);
+	};
+
+	const updateRequestType: SelectChangeEventHandler = (event) => {
+		setRequestType(event.currentTarget.value);
 	};
 
 	const updateHours = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,11 +65,11 @@ const AddRequest = () => {
 			<h1 className="text-3xl text-center">
 				<Link href="/">New Request</Link>
 			</h1>
-			<div className="m-auto">
+			<div>
 				<form onSubmit={submitData}>
-					<div className="text-center grid grid-cols-2 gap-3">
+					<div className="text-center flex flex-col w-1/2 m-auto gap-1">
 						<input
-							className="input input-bordered w-full"
+							className="input w-full input-bordered"
 							type="text"
 							placeholder="Name"
 							onChange={(e) => {
@@ -95,33 +98,49 @@ const AddRequest = () => {
 							placeholder="Total Hours Worked"
 							onChange={updateHours}
 						/>
-						<label>
-							Request Type:
-							<select
-								onChange={updateRequest}
-								className="select w-full max-w-xs">
-								{requestTypes.map((type) => (
-									<option key={type.value} value={type.value}>
-										{type.label}
-									</option>
-								))}
-							</select>
-						</label>
-						<label>
-							Current Status:
+						<div className="form-control grid grid-cols-3 gap-2">
 							<select
 								onChange={updateStatus}
-								className="select w-full max-w-xs">
-								{statusTypes.map((type) => (
+								className="select w-full max-w-xs select-bordered"
+								value={''}>
+								<option value={''} disabled>
+									Select Request Status
+								</option>
+								{requestValues.map((type) => (
 									<option key={type.value} value={type.value}>
 										{type.label}
 									</option>
 								))}
 							</select>
-						</label>
-						<button className="btn btn-primary" type="submit">
+							<select
+								onChange={updateRequestType}
+								className="select w-full max-w-xs select-bordered"
+								value={''}>
+								<option value={''} disabled>
+									Select a request type
+								</option>
+								{statusValues.map((type) => (
+									<option key={type.value} value={type.value}>
+										{type.label}
+									</option>
+								))}
+							</select>
+							<textarea
+								className="textarea textarea-bordered"
+								placeholder="Comments"></textarea>
+						</div>
+					</div>
+					<div className="flex gap-1 justify-center">
+						<button className="btn rounded-full text-lg pl-5" type="submit">
 							Add
 						</button>
+						<Link href="/requests">
+							<a
+								role="button"
+								className="btn btn-warning rounded-full text-lg pl-5">
+								Back
+							</a>
+						</Link>
 					</div>
 				</form>
 			</div>
