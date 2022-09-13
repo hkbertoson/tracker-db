@@ -4,6 +4,18 @@ import {FaEye, FaEdit} from 'react-icons/fa';
 import {RequestData} from '../../utils/types';
 
 export default function RequestPage({data}: any) {
+	if (!data.length) {
+		return (
+			<div className="m-auto flex justify-center flex-row">
+				<h1 className="text-2xl">No Requests Found. Add one here!</h1>
+				<Link href="/requests/add">
+					<button type="button" className="btn btn-primary">
+						Add New Request
+					</button>
+				</Link>
+			</div>
+		);
+	}
 	return (
 		<>
 			<h1 className="text-center text-4xl">

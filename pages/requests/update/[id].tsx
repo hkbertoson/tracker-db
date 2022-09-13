@@ -1,5 +1,9 @@
 import prisma from '../../../lib/prisma';
-import {requestValues, statusValues} from '../../../utils/types';
+import {
+	requestValues,
+	SelectChangeEventHandler,
+	statusValues,
+} from '../../../utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
@@ -11,13 +15,14 @@ export default function RequestPage({data}: any) {
 	const [status, setStatus] = useState(data.status);
 	const [request_type, setRequestType] = useState(data.request_type);
 	const [total_hours_spent, setTotalHours] = useState(data.total_hours_spent);
+	const [billingCode, setBillingCode] = useState(data.billing_code);
 	const requestID = data.id;
 
-	const updateRequest = (event: any) => {
+	const updateRequest: SelectChangeEventHandler = (event) => {
 		setRequestType(event.currentTarget.value);
 	};
 
-	const updateStatus = (event: any) => {
+	const updateStatus: SelectChangeEventHandler = (event) => {
 		setStatus(event.currentTarget.value);
 	};
 
@@ -35,6 +40,7 @@ export default function RequestPage({data}: any) {
 				status,
 				request_type,
 				total_hours_spent,
+				billingCode,
 			};
 			await fetch(`/api/requests/update/${requestID}`, {
 				method: 'PUT',
@@ -80,6 +86,15 @@ export default function RequestPage({data}: any) {
 							setAccountName(e.target.value);
 						}}
 						value={account_name}
+					/>
+					<input
+						className="input input-bordered w-full"
+						type="text"
+						placeholder="Billing Code"
+						onChange={(e) => {
+							setBillingCode(e.target.value);
+						}}
+						value={billingCode}
 					/>
 					<input
 						className="input input-bordered w-full"
