@@ -14,6 +14,7 @@ const AddRequest = () => {
 	const [status, setStatus] = useState('');
 	const [requestType, setRequestType] = useState('');
 	const [billingCode, setBillingCode] = useState('');
+	const [legacyOrg, setLegacyOrg] = useState('');
 	const [totalHours, setTotalHours] = useState(0);
 
 	const submitData = async (e: any) => {
@@ -25,7 +26,8 @@ const AddRequest = () => {
 			!status ||
 			!requestType ||
 			!totalHours ||
-			!billingCode
+			!billingCode ||
+			!legacyOrg
 		) {
 			alert('Please fill in all fields');
 			return;
@@ -39,6 +41,7 @@ const AddRequest = () => {
 				requestType,
 				totalHours,
 				billingCode,
+				legacyOrg,
 			};
 			await fetch('/api/requests/add', {
 				method: 'POST',
@@ -53,6 +56,10 @@ const AddRequest = () => {
 
 	const updateStatus: SelectChangeEventHandler = (event) => {
 		setStatus(event.currentTarget.value);
+	};
+
+	const updateLegacyOrg: SelectChangeEventHandler = (event) => {
+		setLegacyOrg(event.currentTarget.value);
 	};
 
 	const updateRequestType: SelectChangeEventHandler = (event) => {
@@ -135,6 +142,16 @@ const AddRequest = () => {
 									{type.label}
 								</option>
 							))}
+						</select>
+						<select
+							onChange={updateLegacyOrg}
+							className="select w-full max-w-xs select-bordered"
+							defaultValue={'DEFAULT'}>
+							<option value="DEFAULT" disabled>
+								Select Legacy Org
+							</option>
+							<option value="CSC">CSC</option>
+							<option value="ES">ES</option>
 						</select>
 						<textarea
 							className="textarea textarea-bordered"
