@@ -124,9 +124,9 @@ const AddRequest = () => {
 							<option value="DEFAULT" disabled>
 								Select Request Status
 							</option>
-							{requestValues.map((type) => (
+							{statusValues.map((type) => (
 								<option key={type.value} value={type.value}>
-									{type.label}
+									{type.value}
 								</option>
 							))}
 						</select>
@@ -137,9 +137,9 @@ const AddRequest = () => {
 							<option value="DEFAULT" disabled>
 								Select a request type
 							</option>
-							{statusValues.map((type) => (
+							{requestValues.map((type) => (
 								<option key={type.value} value={type.value}>
-									{type.label}
+									{type.value}
 								</option>
 							))}
 						</select>
@@ -160,15 +160,16 @@ const AddRequest = () => {
 					</div>
 				</div>
 				<div className="flex gap-1 justify-center">
-					<button className="btn rounded-full text-lg pl-5" type="submit">
+					<button
+						className="btn btn-primary rounded-full text-lg pl-5"
+						type="submit">
 						Add
 					</button>
+					<Link href="/">
+						<a className="btn btn-secondary rounded-full text-lg pl-5">Home</a>
+					</Link>
 					<Link href="/requests">
-						<a
-							role="button"
-							className="btn btn-warning rounded-full text-lg pl-5">
-							Back
-						</a>
+						<a className="btn btn-warning rounded-full text-lg pl-5">Back</a>
 					</Link>
 				</div>
 			</form>

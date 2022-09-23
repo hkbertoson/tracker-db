@@ -35,13 +35,18 @@ export default function RequestPage({data}: any) {
 						<p>{data.last_updated.toString()}</p>
 					</div>
 				</div>
+				<div className="flex gap-1 justify-center">
+					<Link href={`/requests/update/${data.id}`}>
+						<a className="btn btn-primary rounded-full text-lg pl-5">Update</a>
+					</Link>
+					<Link href="/">
+						<a className="btn btn-secondary rounded-full text-lg pl-5">Home</a>
+					</Link>
+					<Link href="/requests">
+						<a className="btn btn-warning rounded-full text-lg pl-5">Back</a>
+					</Link>
+				</div>
 			</div>
-			<Link href="/requests">
-				<a className="text-2xl btn btn-accent">Back</a>
-			</Link>
-			<Link href={`/requests/update/${data.id}`}>
-				<a className="text-2xl btn btn-accent">Update</a>
-			</Link>
 		</>
 	);
 }

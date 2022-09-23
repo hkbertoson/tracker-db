@@ -12,16 +12,21 @@ export const requestValues = [
 	{label: 'New Logo', value: 'New Logo'},
 ];
 
+// export const statusValues = [
+// 	{label: 'To be Started', value: 'To Be Started'},
+// 	{label: 'Completed', value: 'Completed'},
+// 	{
+// 		label: 'Awaiting Customer Confirmation',
+// 		value: 'Awaiting Customer Confirmation',
+// 	},
+// 	{label: 'Work in Progress', value: 'Work in Progress'},
+// ];
 export const statusValues = [
-	{label: 'To be Started', value: 'To Be Started'},
-	{label: 'Completed', value: 'Completed'},
-	{
-		label: 'Awaiting Customer Confirmation',
-		value: 'Awaiting Customer Confirmation',
-	},
-	{label: 'Work in Progress', value: 'Work in Progress'},
+	{value: 'To be Started'},
+	{value: 'Completed'},
+	{value: 'Awaiting Customer Confirmation'},
+	{value: 'Work in Progress'},
 ];
-
 export interface RequestData {
 	id: number;
 	name: string;

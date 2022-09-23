@@ -6,10 +6,10 @@ import {RequestData} from '../../utils/types';
 export default function RequestPage({data}: any) {
 	if (!data.length) {
 		return (
-			<div className="m-auto flex justify-center flex-row">
+			<div className="m-auto flex flex-col items-center">
 				<h1 className="text-2xl">No Requests Found. Add one here!</h1>
 				<Link href="/requests/add">
-					<button type="button" className="btn btn-primary">
+					<button type="button" className="btn btn-primary w-1/5">
 						Add New Request
 					</button>
 				</Link>
