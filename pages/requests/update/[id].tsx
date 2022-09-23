@@ -3,23 +3,11 @@ import {
 	requestValues,
 	SelectChangeEventHandler,
 	statusValues,
+	RequestPageProps,
 } from '../../../utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
-
-interface RequestPageProps {
-	id: number;
-	name: string;
-	project_id: string;
-	account_name: string;
-	status: string;
-	request_type: string;
-	billing_code: string | null;
-	legacy_org: string;
-	total_hours_spent: number;
-	comment: string;
-}
 
 export default function RequestPage(data: RequestPageProps) {
 	const [name, setName] = useState(data.name);
@@ -32,10 +20,6 @@ export default function RequestPage(data: RequestPageProps) {
 	const [legacyOrg, setLegacyOrg] = useState(data.legacy_org);
 	const [comment, setComment] = useState(data.comment);
 	const requestID = data.id;
-
-	// const updateRequest: SelectChangeEventHandler = (event) => {
-	// 	setRequestType(event.currentTarget.value);
-	// };
 
 	const updateStatus: SelectChangeEventHandler = (event) => {
 		setStatus(event.currentTarget.value);
@@ -113,7 +97,7 @@ export default function RequestPage(data: RequestPageProps) {
 						onChange={(e) => {
 							setBillingCode(e.target.value);
 						}}
-						value={billingCode}
+						value={billingCode || ''}
 					/>
 					<input
 						className="input input-bordered w-full"
@@ -133,7 +117,7 @@ export default function RequestPage(data: RequestPageProps) {
 								className="select w-full max-w-xs select-bordered">
 								{requestValues.map((type) => (
 									<option key={type.value} value={type.value}>
-										{type.label}
+										{type.value}
 									</option>
 								))}
 							</select>
@@ -177,7 +161,7 @@ export default function RequestPage(data: RequestPageProps) {
 					<button
 						className="btn btn-primary rounded-full text-lg pl-5"
 						type="submit">
-						Update
+						Submit
 					</button>
 					<Link href="/">
 						<a className="btn btn-secondary rounded-full text-lg pl-5">Home</a>
