@@ -16,7 +16,7 @@
 		"incremental": true,
 		"paths": {
 			"@/components/*": ["./components/*"],
-			"@/pages/*": ["./pages/*"],
+			"@/pages/*": ["./src/pages/*"],
 			"@/styles/*": ["./styles/*"]
 		}
 	},
@@ -24,7 +24,7 @@
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"pages/api/posts/[id]/index.js"
+		"src/pages/api/posts/[id]/index.js"
 	],
 	"exclude": ["node_modules"]
 }

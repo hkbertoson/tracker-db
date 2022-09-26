@@ -1,5 +1,5 @@
-import prisma from '../../../lib/prisma';
-import {RequestPageProps} from '../../../utils/types';
+import prisma from '../../../../lib/prisma';
+import {RequestPageProps} from '../../../../utils/types';
 import Link from 'next/link';
 
 export default function RequestPage(data: RequestPageProps) {

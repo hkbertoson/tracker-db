@@ -3,7 +3,7 @@ import {
 	requestValues,
 	statusValues,
 	SelectChangeEventHandler,
-} from '../../../utils/types';
+} from '../../../../utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
 

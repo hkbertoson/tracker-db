@@ -1,5 +1,5 @@
 import {render, screen} from '@testing-library/react';
-import RequestPage from '../pages/requests/index';
+import RequestPage from '../src/pages/requests/index';
 
 describe('Requests', () => {
 	it('renders a heading', () => {

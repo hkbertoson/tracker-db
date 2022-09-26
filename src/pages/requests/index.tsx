@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import prisma from '../../lib/prisma';
+import prisma from '../../../lib/prisma';
 import {FaEye, FaEdit} from 'react-icons/fa';
-import {RequestData} from '../../utils/types';
+import {RequestData} from '../../../utils/types';
 
 export default function RequestPage({data}: any) {
 	if (!data.length) {

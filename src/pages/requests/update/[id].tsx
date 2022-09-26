@@ -1,10 +1,10 @@
-import prisma from '../../../lib/prisma';
+import prisma from '../../../../lib/prisma';
 import {
 	requestValues,
 	SelectChangeEventHandler,
 	statusValues,
 	RequestPageProps,
-} from '../../../utils/types';
+} from '../../../../utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
@@ -20,10 +20,6 @@ export default function RequestPage(data: RequestPageProps) {
 	const [legacyOrg, setLegacyOrg] = useState(data.legacy_org);
 	const [comment, setComment] = useState(data.comment);
 	const requestID = data.id;
-
-	const updateStatus: SelectChangeEventHandler = (event) => {
-		setStatus(event.currentTarget.value);
-	};
 
 	const updateHours = (e: any) => {
 		setTotalHours(parseInt(e.currentTarget.value));
