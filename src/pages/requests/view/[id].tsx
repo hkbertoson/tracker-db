@@ -1,9 +1,9 @@
 import prisma from '../../../../lib/prisma';
 import {RequestPageProps} from '../../../../utils/types';
 import Link from 'next/link';
+import {AddButton, HomeButton, BackButton} from '@components/Button';
 
 export default function RequestPage(data: RequestPageProps) {
-	console.log(data);
 	return (
 		<>
 			<h1 className="text-3xl text-center">
@@ -59,17 +59,13 @@ export default function RequestPage(data: RequestPageProps) {
 			</div>
 			<div className="flex gap-1 justify-center">
 				<Link href={`/requests/update/${data.id}`}>
-					<button
-						className="btn btn-primary rounded-full text-lg pl-5"
-						type="submit">
-						Update
-					</button>
+					<AddButton />
 				</Link>
 				<Link href="/">
-					<a className="btn btn-secondary rounded-full text-lg pl-5">Home</a>
+					<HomeButton />
 				</Link>
 				<Link href="/requests">
-					<a className="btn btn-warning rounded-full text-lg pl-5">Back</a>
+					<BackButton />
 				</Link>
 			</div>
 		</>

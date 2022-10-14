@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"baseUrl": "src",
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
@@ -15,9 +16,9 @@
 		"jsx": "preserve",
 		"incremental": true,
 		"paths": {
-			"@/components/*": ["./components/*"],
-			"@/pages/*": ["./src/pages/*"],
-			"@/styles/*": ["./styles/*"]
+			"@components/*": ["components/*"],
+			"@/pages/*": ["pages/*"],
+			"@/styles/*": ["styles/*"]
 		}
 	},
 	"include": [

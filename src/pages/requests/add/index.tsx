@@ -6,6 +6,7 @@ import {
 } from '../../../../utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
+import {AddButton, BackButton, HomeButton} from '@components/Button';
 
 const AddRequest = () => {
 	const [name, setName] = useState('');
@@ -160,16 +161,14 @@ const AddRequest = () => {
 					</div>
 				</div>
 				<div className="flex gap-1 justify-center">
-					<button
-						className="btn btn-primary rounded-full text-lg pl-5"
-						type="submit">
-						Add
-					</button>
+					<Link href={'/'}>
+						<AddButton />
+					</Link>
 					<Link href="/">
-						<a className="btn btn-secondary rounded-full text-lg pl-5">Home</a>
+						<HomeButton />
 					</Link>
 					<Link href="/requests">
-						<a className="btn btn-warning rounded-full text-lg pl-5">Back</a>
+						<BackButton />
 					</Link>
 				</div>
 			</form>
