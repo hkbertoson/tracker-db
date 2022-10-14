@@ -40,6 +40,17 @@ export interface RequestData {
 	status: string;
 }
 
+export interface UserPageProps {
+	id: number;
+	name: string;
+	email: string;
+	eid: string;
+	legacy_org: string;
+	cost_center: string;
+	profit_center: string;
+	phone_number: string;
+}
+
 export interface RequestData {
 	value: string;
 }

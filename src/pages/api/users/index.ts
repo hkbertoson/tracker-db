@@ -1,5 +1,10 @@
-const index = () => {
-	return 'Hello World';
-};
+import type {NextApiRequest, NextApiResponse} from 'next';
+import prisma from '../../../../lib/prisma';
 
-export default index;
+export default async function handle(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
+	const allUsers = await prisma.users.findMany({});
+	res.json(allUsers);
+}

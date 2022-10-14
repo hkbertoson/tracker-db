@@ -21,6 +21,7 @@ export default function RequestPage({data}: any) {
 			<h1 className="text-center text-4xl">
 				<Link href="/">Requests</Link>
 			</h1>
+
 			<div className="grid grid-cols-4 gap-2 mt-4">
 				{data.map((request: RequestData) => (
 					<div
