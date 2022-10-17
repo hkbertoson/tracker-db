@@ -11,9 +11,6 @@ function Home() {
 				<MainButton title="View All Users" requestLink="/users" />
 				<iframe
 					src="https://gfycat.com/ifr/BlankCooperativeDaddylonglegs"
-					frameborder="0"
-					scrolling="no"
-					allowfullscreen
 					width="640"
 					height="412"></iframe>
 				<p>
