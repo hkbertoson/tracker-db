@@ -7,6 +7,7 @@ import {
 import Router from 'next/router';
 import Link from 'next/link';
 import {AddButton, BackButton, HomeButton} from '@components/Button';
+import {Textbox} from '@components/Textbox';
 
 const AddRequest = () => {
 	const [name, setName] = useState('');
@@ -20,19 +21,19 @@ const AddRequest = () => {
 
 	const submitData = async (e: any) => {
 		e.preventDefault();
-		if (
-			!name ||
-			!projectID ||
-			!accountName ||
-			!status ||
-			!requestType ||
-			!totalHours ||
-			!billingCode ||
-			!legacyOrg
-		) {
-			alert('Please fill in all fields');
-			return;
-		}
+		// if (
+		// 	!name ||
+		// 	!projectID ||
+		// 	!accountName ||
+		// 	!status ||
+		// 	!requestType ||
+		// 	!totalHours ||
+		// 	!billingCode ||
+		// 	!legacyOrg
+		// ) {
+		// 	alert('Please fill in all fields'4);
+		// 	return;
+		// }
 		try {
 			const data = {
 				name,
@@ -78,14 +79,15 @@ const AddRequest = () => {
 			</h1>
 			<form onSubmit={submitData}>
 				<div className="text-center flex flex-col w-1/2 m-auto gap-1">
-					<input
+					<Textbox />
+					{/* <input
 						className="input w-full input-bordered"
 						type="text"
 						placeholder="Name"
 						onChange={(e) => {
 							setName(e.target.value);
 						}}
-					/>
+					/> */}
 					<input
 						className="input input-bordered w-full"
 						type="text"
