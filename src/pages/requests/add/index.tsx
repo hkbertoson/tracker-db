@@ -6,7 +6,7 @@ import {
 } from '../../../../utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
-import {AddButton, BackButton, HomeButton} from '@components/Button';
+import {AddButton, BackButton, HomeButton} from '@components/Buttons';
 import {Textbox} from '@components/Textbox';
 
 const AddRequest = () => {
