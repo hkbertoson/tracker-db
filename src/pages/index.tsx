@@ -9,16 +9,6 @@ function Home() {
 				<MainButton title="Add New Request" requestLink="/requests/add" />
 				<MainButton title="Add New User" requestLink="/users/add" />
 				<MainButton title="View All Users" requestLink="/users" />
-				<iframe
-					src="https://gfycat.com/ifr/BlankCooperativeDaddylonglegs"
-					width="640"
-					height="412"></iframe>
-				<p>
-					{' '}
-					<a href="https://gfycat.com/blankcooperativedaddylonglegs">
-						via Gfycat
-					</a>
-				</p>
 			</div>
 		</>
 	);
