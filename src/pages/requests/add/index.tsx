@@ -6,8 +6,7 @@ import {
 } from '../../../../utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
-import {AddButton, BackButton, HomeButton} from '@components/Buttons';
-// import {Textbox} from '@components/Textbox';
+import {AddButton, BackButton, HomeButton} from 'components/Buttons';
 
 const AddRequest = () => {
 	const [name, setName] = useState('');
@@ -79,7 +78,6 @@ const AddRequest = () => {
 			</h1>
 			<form onSubmit={submitData}>
 				<div className="text-center flex flex-col w-1/2 m-auto gap-1">
-					<Textbox />
 					{/* <input
 						className="input w-full input-bordered"
 						type="text"

@@ -3,18 +3,18 @@ import {FaEdit, FaEye} from 'react-icons/fa';
 import prisma from '../../../lib/prisma';
 
 export default function UsersPage({data}: any) {
-	// if (!data.length) {
-	// 	return (
-	// 		<div className="m-auto flex flex-col items-center">
-	// 			<h1 className="text-2xl">No Users Found. Add one here!</h1>
-	// 			<Link href="/users/add">
-	// 				<button type="button" className="btn btn-primary w-1/5">
-	// 					Add New User
-	// 				</button>
-	// 			</Link>
-	// 		</div>
-	// 	);
-
+	if (!data.length) {
+		return (
+			<div className="m-auto flex flex-col items-center">
+				<h1 className="text-2xl">No Users Found. Add one here!</h1>
+				<Link href="/users/add">
+					<button type="button" className="btn btn-primary w-1/5">
+						Add New User
+					</button>
+				</Link>
+			</div>
+		);
+	}
 	return (
 		<>
 			<h1 className="text-center text-4xl">
