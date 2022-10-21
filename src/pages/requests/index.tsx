@@ -2,54 +2,51 @@ import Link from 'next/link';
 import prisma from '../../../lib/prisma';
 import {FaEye, FaEdit} from 'react-icons/fa';
 import {RequestData} from '../../../utils/types';
+import {Button} from 'components/MainPage';
+import {Header} from 'components/Header';
 
-export default function RequestPage({data}: any) {
+const RequestPage = ({data}: any) => {
 	if (!data.length) {
 		return (
-			<div className="m-auto flex flex-col items-center">
-				<h1 className="text-2xl">No Requests Found. Add one here!</h1>
-				<Link href="/requests/add">
-					<button type="button" className="btn btn-primary w-1/5">
-						Add New Request
-					</button>
-				</Link>
+			<div className="text-center text-2xl">
+				<Header title="No Requests Found." url="/" />
+				<Button title="Add Request" requestLink="/requests/add" />
 			</div>
 		);
 	}
 	return (
 		<>
-			<h1 className="text-center text-4xl">
-				<Link href="/">Requests</Link>
-			</h1>
-
-			<div className="grid grid-cols-4 gap-2 mt-4">
+			<Header title="Requests" url="/" />
+			<div className="grid grid-cols-4 gap-3 mt-5">
 				{data.map((request: RequestData) => (
 					<div
-						className="card w-96 bg-neutral text-neutral-content"
+						className="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md"
 						key={request.id}>
-						<div className="card-body">
-							<h2 className="card-title">{request.project_id}</h2>
+						<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+							{request.project_id}
+						</h5>
+						<div className="mb-3 font-normal text-gray-700">
 							<p>Account Name: {request.account_name}</p>
 							<p>Status: {request.status}</p>
-							<div className="flex flex-row gap-3">
-								<Link href={`/requests/update/${request.id}`}>
-									<a>
-										<FaEdit />
-									</a>
-								</Link>
-								<Link href={`/requests/view/${request.id}`}>
-									<a>
-										<FaEye />
-									</a>
-								</Link>
-							</div>
+						</div>
+						<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
+							<Link href={`/requests/update/${request.id}`}>
+								<FaEdit />
+							</Link>
+						</div>
+						<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
+							<Link href={`/requests/view/${request.id}`}>
+								<FaEye />
+							</Link>
 						</div>
 					</div>
 				))}
 			</div>
 		</>
 	);
-}
+};
+
+export default RequestPage;
 
 export const getServerSideProps = async () => {
 	const data = await prisma.requests.findMany({});

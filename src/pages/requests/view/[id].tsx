@@ -2,13 +2,12 @@ import prisma from '../../../../lib/prisma';
 import {RequestPageProps} from '../../../../utils/types';
 import Link from 'next/link';
 import {AddButton, HomeButton, BackButton} from '@components/Buttons';
+import {Header} from '@components/Header';
 
 export default function RequestPage(data: RequestPageProps) {
 	return (
 		<>
-			<h1 className="text-3xl text-center">
-				<Link href="/">{data.project_id}</Link>
-			</h1>
+			<Header title={data.project_id} url="/" />
 			<div className="text-center flex flex-col w-1/2 m-auto gap-1">
 				<input
 					className="input input-bordered w-full"
