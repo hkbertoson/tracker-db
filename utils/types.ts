@@ -6,17 +6,17 @@ export type SelectChangeEventHandler =
 	React.ChangeEventHandler<HTMLSelectElement>;
 
 export const requestValues = [
-	{value: 'Rem'},
-	{label: 'Add On'},
-	{label: 'Migration'},
-	{label: 'New Logo'},
+	{value: 'Rem', name: 'Rem'},
+	{label: 'Add On', name: 'Add'},
+	{label: 'Migration', name: 'Migration'},
+	{label: 'New Logo', name: 'Logo'},
 ];
 
 export const statusValues = [
-	{value: 'To be Started'},
-	{value: 'Completed'},
-	{value: 'Awaiting Customer Confirmation'},
-	{value: 'Work in Progress'},
+	{value: 'To be Started', name: 'Start'},
+	{value: 'Completed', name: 'Complete'},
+	{value: 'Awaiting Customer Confirmation', name: 'Waiting'},
+	{value: 'Work in Progress', name: 'Progress'},
 ];
 
 export interface RequestPageProps {
@@ -32,12 +32,18 @@ export interface RequestPageProps {
 	comment: string;
 	last_updated: string;
 }
+
+export interface MainPageProps {
+	title: string;
+	url: URL | string;
+}
 export interface RequestData {
 	id: number;
 	name: string;
 	project_id: string;
 	account_name: string;
 	status: string;
+	value: string;
 }
 
 export interface UserPageProps {
@@ -49,8 +55,4 @@ export interface UserPageProps {
 	cost_center: string;
 	profit_center: string;
 	phone_number: string;
-}
-
-export interface RequestData {
-	value: string;
 }

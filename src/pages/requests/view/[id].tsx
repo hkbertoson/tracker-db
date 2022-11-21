@@ -9,7 +9,6 @@ export default function RequestPage(data: RequestPageProps) {
 		<>
 			<Header title={data.project_id} url="/" />
 			<div className="grid grid-cols-12">
-				{/* <form className=""> */}
 				<label htmlFor="project_id">Project ID</label>
 				<input className="form-input" id="project_id" />
 				<label htmlFor="project_id">Project ID</label>
@@ -26,7 +25,6 @@ export default function RequestPage(data: RequestPageProps) {
 				<input className="form-input" id="project_id" />
 				<label htmlFor="project_id">Project ID</label>
 				<input className="form-input" id="project_id" />
-				{/* </form> */}
 			</div>
 			<div className="hidden sm:block" aria-hidden="true">
 				<div className="py-5">

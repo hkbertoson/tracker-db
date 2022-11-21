@@ -10,7 +10,7 @@ const RequestPage = ({data}: any) => {
 		return (
 			<div className="text-center text-2xl">
 				<Header title="No Requests Found." url="/" />
-				<Button title="Add Request" requestLink="/requests/add" />
+				<Button title="Add Request" url="/requests/add" />
 			</div>
 		);
 	}

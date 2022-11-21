@@ -1,38 +1,41 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import {
 	requestValues,
 	statusValues,
 	SelectChangeEventHandler,
 } from '../../../../utils/types';
+import RequestReducer from '../../../../utils/hooks/requestReducer';
 import Router from 'next/router';
 import Link from 'next/link';
 import {AddButton, BackButton, HomeButton} from 'components/Buttons';
 
 const AddRequest = () => {
-	const [name, setName] = useState('');
-	const [projectID, setProjectID] = useState('');
-	const [accountName, setAccountName] = useState('');
+	const initialRequestState = {
+		name: '',
+		projectID: '',
+		accountName: '',
+		status: '',
+		requestType: '',
+		billingCode: '',
+		legacyOrg: '',
+		totalHours: 0,
+	};
+	const [request, dispatch] = useReducer(RequestReducer, initialRequestState);
+
+	const handleTextChange = (e: any) => {
+		dispatch({
+			type: 'HANDLE INPUT TEXT',
+			field: e.target.name,
+			payload: e.target.value,
+		});
+	};
 	const [status, setStatus] = useState('');
 	const [requestType, setRequestType] = useState('');
-	const [billingCode, setBillingCode] = useState('');
 	const [legacyOrg, setLegacyOrg] = useState('');
-	const [totalHours, setTotalHours] = useState(0);
+	// const [totalHours, setTotalHours] = useState(0);
 
 	const submitData = async (e: any) => {
 		e.preventDefault();
-		// if (
-		// 	!name ||
-		// 	!projectID ||
-		// 	!accountName ||
-		// 	!status ||
-		// 	!requestType ||
-		// 	!totalHours ||
-		// 	!billingCode ||
-		// 	!legacyOrg
-		// ) {
-		// 	alert('Please fill in all fields'4);
-		// 	return;
-		// }
 		try {
 			const data = {
 				name,
@@ -78,28 +81,31 @@ const AddRequest = () => {
 			</h1>
 			<form onSubmit={submitData}>
 				<div className="text-center flex flex-col w-1/2 m-auto gap-1">
-					{/* <input
-						className="input w-full input-bordered"
-						type="text"
-						placeholder="Name"
-						onChange={(e) => {
-							setName(e.target.value);
-						}}
-					/> */}
 					<input
 						className="input input-bordered w-full"
 						type="text"
-						placeholder="Project ID"
+						placeholder="Name"
+						name="name"
 						onChange={(e) => {
-							setProjectID(e.target.value);
+							handleTextChange(e);
 						}}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
+						name="projectID"
+						placeholder="Project ID"
+						onChange={(e) => {
+							handleTextChange(e);
+						}}
+					/>
+					<input
+						className="input input-bordered w-full"
+						type="text"
+						name="Account Name"
 						placeholder="Account Name"
 						onChange={(e) => {
-							setAccountName(e.target.value);
+							handleTextChange(e);
 						}}
 					/>
 					<input
@@ -107,14 +113,17 @@ const AddRequest = () => {
 						type="text"
 						placeholder="Billing Code"
 						onChange={(e) => {
-							setBillingCode(e.target.value);
+							handleTextChange(e);
 						}}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="number"
+						name="Total Hours Worked"
 						placeholder="Total Hours Worked"
-						onChange={updateHours}
+						onChange={(e) => {
+							handleTextChange(e);
+						}}
 					/>
 
 					<div className="form-control grid grid-cols-3 gap-2">
@@ -126,7 +135,7 @@ const AddRequest = () => {
 								Select Request Status
 							</option>
 							{statusValues.map((type) => (
-								<option key={type.value} value={type.value}>
+								<option key={type.name} value={type.value}>
 									{type.value}
 								</option>
 							))}
@@ -139,7 +148,7 @@ const AddRequest = () => {
 								Select a request type
 							</option>
 							{requestValues.map((type) => (
-								<option key={type.value} value={type.value}>
+								<option key={type.name} value={type.value}>
 									{type.value}
 								</option>
 							))}
@@ -161,15 +170,13 @@ const AddRequest = () => {
 					</div>
 				</div>
 				<div className="flex gap-1 justify-center">
-					<Link href={'/'}>
-						<AddButton />
-					</Link>
-					<Link href="/">
-						<HomeButton />
-					</Link>
-					<Link href="/requests">
-						<BackButton />
-					</Link>
+					<HomeButton url="/" title="Home" />
+					<BackButton url="/requests" title="Back" />
+					<button
+						className="btn btn-primary rounded-full text-lg pl-5"
+						type="submit">
+						Submit
+					</button>
 				</div>
 			</form>
 		</>
