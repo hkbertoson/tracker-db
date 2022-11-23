@@ -1,4 +1,4 @@
-import {Button} from 'components/MainPage';
+import {Button} from '@/components/MainPage';
 
 function Home() {
 	return (

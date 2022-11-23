@@ -1,5 +1,5 @@
-import prisma from '../../../../lib/prisma';
-import {RequestPageProps} from '../../../../utils/types';
+import prisma from '../../../utils/prisma';
+import {RequestPageProps} from '../@/utils/types';
 import Link from 'next/link';
 import {AddButton, HomeButton, BackButton} from 'components/Buttons';
 import {Header} from 'components/Header';

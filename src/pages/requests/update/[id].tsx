@@ -1,10 +1,10 @@
-import prisma from '../../../../lib/prisma';
+import prisma from '../../../utils/prisma';
 import {
 	requestValues,
 	SelectChangeEventHandler,
 	statusValues,
 	RequestPageProps,
-} from '../../../../utils/types';
+} from '../@/utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';

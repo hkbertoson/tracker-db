@@ -3,11 +3,11 @@ import {
 	requestValues,
 	statusValues,
 	SelectChangeEventHandler,
-} from '../../../../utils/types';
-import RequestReducer from '../../../../utils/hooks/requestReducer';
+} from '@/utils/types';
+import RequestReducer from '@/utils/hooks/requestReducer';
 import Router from 'next/router';
 import Link from 'next/link';
-import {AddButton, BackButton, HomeButton} from 'components/Buttons';
+import {AddButton, BackButton, HomeButton} from '@/components/Buttons';
 
 const AddRequest = () => {
 	const initialRequestState = {

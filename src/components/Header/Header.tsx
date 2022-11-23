@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {MainPageProps} from '../../../utils/types';
+import {MainPageProps} from '@/utils/types';
 
 const Header = ({title, url}: MainPageProps) => {
 	return (
