@@ -1,9 +1,5 @@
-import React, {useReducer, useState} from 'react';
-import {
-	requestValues,
-	statusValues,
-	SelectChangeEventHandler,
-} from '@/utils/types';
+import React, {useState} from 'react';
+import {requestValues, statusValues} from '@/utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
 import {AddButton, BackButton, HomeButton} from '@/components/Buttons';
@@ -13,52 +9,44 @@ const AddRequest = () => {
 		name: '',
 		projectID: '',
 		accountName: '',
-		status: '',
-		requestType: '',
+		status: 'DEFAULT',
+		requestType: 'DEFAULT',
 		billingCode: '',
-		legacyOrg: '',
-		totalHours: 0,
+		legacyOrg: 'DEFAULT',
+		comments: '',
+		totalHours: '',
 	};
-	const [requestData, setRequestData] = useState(initialRequestState);
+	const [requestDataState, setRequestDataState] = useState(initialRequestState);
+
+	function handleChange(e: any) {
+		e.preventDefault();
+		setRequestDataState({...requestDataState, [e.target.name]: e.target.value});
+	}
 
 	const submitData = async (e: any) => {
 		e.preventDefault();
 		try {
-			const data = {
-				name,
-				projectID,
-				accountName,
-				status,
-				requestType,
-				totalHours,
-				billingCode,
-				legacyOrg,
-			};
-			await fetch('/api/requests/add', {
-				method: 'POST',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify(data),
-			});
-			await Router.push('/requests');
+			const data2 = {...requestDataState};
+			console.log(data2);
+			// const data = {
+			// 	name,
+			// 	projectID,
+			// 	accountName,
+			// 	status,
+			// 	requestType,
+			// 	totalHours,
+			// 	billingCode,
+			// 	legacyOrg,
+			// };
+			// await fetch('/api/requests/add', {
+			// 	method: 'POST',
+			// 	headers: {'Content-Type': 'application/json'},
+			// 	body: JSON.stringify(data),
+			// });
+			// await Router.push('/requests');
 		} catch (error) {
 			console.log(error);
 		}
-	};
-
-	const updateStatus: SelectChangeEventHandler = (event) => {
-		setStatus(event.currentTarget.value);
-	};
-
-	const updateLegacyOrg: SelectChangeEventHandler = (event) => {
-		setLegacyOrg(event.currentTarget.value);
-	};
-
-	const updateRequestType: SelectChangeEventHandler = (event) => {
-		setRequestType(event.currentTarget.value);
-	};
-
-	const updateHours = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setTotalHours(parseInt(e.currentTarget.value));
 	};
 
 	return (
@@ -73,54 +61,48 @@ const AddRequest = () => {
 						type="text"
 						placeholder="Name"
 						name="name"
-						onChange={(e) => {
-							setRequestData(e.target.value);
-						}}
+						value={requestDataState.name}
+						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
 						name="projectID"
 						placeholder="Project ID"
-						onChange={(e) => {
-							handleTextChange(e);
-						}}
+						value={requestDataState.projectID}
+						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
-						name="Account Name"
+						name="accountName"
 						placeholder="Account Name"
-						onChange={(e) => {
-							handleTextChange(e);
-						}}
+						value={requestDataState.accountName}
+						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
 						placeholder="Billing Code"
-						onChange={(e) => {
-							handleTextChange(e);
-						}}
+						name="billingCode"
+						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="number"
-						name="Total Hours Worked"
+						name="totalHours"
 						placeholder="Total Hours Worked"
-						onChange={(e) => {
-							handleTextChange(e);
-						}}
+						value={requestDataState.totalHours}
+						onChange={handleChange}
 					/>
-
-					<div className="form-control grid grid-cols-3 gap-2">
+					<div className="flex flex-row gap-1">
 						<select
-							onChange={updateStatus}
-							className="select w-full max-w-xs select-bordered"
-							defaultValue={'DEFAULT'}>
-							<option value="DEFAULT" disabled>
+							onChange={handleChange}
+							className="flex-grow w-auto"
+							value={requestDataState.status}>
+							{/* <option value="DEFAULT" disabled>
 								Select Request Status
-							</option>
+							</option> */}
 							{statusValues.map((type) => (
 								<option key={type.name} value={type.value}>
 									{type.value}
@@ -128,9 +110,9 @@ const AddRequest = () => {
 							))}
 						</select>
 						<select
-							onChange={updateRequestType}
-							className="select w-full max-w-xs select-bordered"
-							defaultValue={'DEFAULT'}>
+							onChange={handleChange}
+							className="flex-grow w-auto"
+							value={requestDataState.requestType}>
 							<option value="DEFAULT" disabled>
 								Select a request type
 							</option>
@@ -141,21 +123,25 @@ const AddRequest = () => {
 							))}
 						</select>
 						<select
-							onChange={updateLegacyOrg}
-							className="select w-full max-w-xs select-bordered"
-							defaultValue={'DEFAULT'}>
+							onChange={handleChange}
+							className="flex-grow w-auto"
+							value={requestDataState.legacyOrg}>
 							<option value="DEFAULT" disabled>
 								Select Legacy Org
 							</option>
 							<option value="CSC">CSC</option>
 							<option value="ES">ES</option>
 						</select>
-						<textarea
-							className="textarea textarea-bordered"
-							placeholder="Comments"
-						/>
 					</div>
+					<textarea
+						className="textarea textarea-bordered"
+						placeholder="Comments"
+						name="comments"
+						onChange={handleChange}
+						value={requestDataState.comments}
+					/>
 				</div>
+
 				<div className="flex gap-1 justify-center">
 					<HomeButton url="/" title="Home" />
 					<BackButton url="/requests" title="Back" />

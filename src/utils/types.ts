@@ -1,10 +1,3 @@
-export type InputChangeEventHandler =
-	React.ChangeEventHandler<HTMLInputElement>;
-export type TextareaChangeEventHandler =
-	React.ChangeEventHandler<HTMLTextAreaElement>;
-export type SelectChangeEventHandler =
-	React.ChangeEventHandler<HTMLSelectElement>;
-
 export const requestValues = [
 	{value: 'Rem', name: 'Rem'},
 	{label: 'Add On', name: 'Add'},
