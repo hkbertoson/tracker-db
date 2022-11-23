@@ -2,8 +2,8 @@ import Link from 'next/link';
 import prisma from '../../utils/prisma';
 import {FaEye, FaEdit} from 'react-icons/fa';
 import {RequestData} from '@/utils/types';
-import {Button} from 'components/MainPage';
-import {Header} from 'components/Header';
+import {Button} from '@/components/MainPage';
+import {Header} from '@/components/Header';
 
 const RequestPage = ({data}: any) => {
 	if (!data.length) {
