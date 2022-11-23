@@ -8,16 +8,16 @@ import {useState} from 'react';
 export default function RequestPage(data: RequestPageProps) {
 	const initialRequestState = {
 		name: data.name,
-		projectID: data.project_id,
-		accountName: data.account_name,
+		project_id: data.project_id,
+		account_name: data.account_name,
 		status: data.status,
-		requestType: data.request_type,
-		totalHours: data.total_hours_spent,
-		legacyOrg: data.legacy_org,
-		billingCode: data.billing_code,
-		comments: data.comment,
-		requestID: data.id,
+		request_type: data.request_type,
+		total_hours_spent: data.total_hours_spent,
+		legacy_org: data.legacy_org,
+		wbs: data.wbs,
+		comment: data.comment,
 	};
+	const requestID = data.id;
 
 	const [requestDataState, setRequestDataState] = useState(initialRequestState);
 	function handleChange(e: any) {
@@ -31,15 +31,7 @@ export default function RequestPage(data: RequestPageProps) {
 	const submitData = async (e: any) => {
 		e.preventDefault();
 		try {
-			const data = {
-				name,
-				project_id,
-				account_name,
-				status,
-				request_type,
-				total_hours_spent,
-				billingCode,
-			};
+			const data = {...requestDataState};
 			await fetch(`/api/requests/update/${requestID}`, {
 				method: 'PUT',
 				headers: {'Content-Type': 'application/json'},
@@ -54,7 +46,7 @@ export default function RequestPage(data: RequestPageProps) {
 	return (
 		<>
 			<h1 className="text-3xl text-center">
-				<Link href="/">New Request</Link>
+				<Link href="/">Update Request: {data.project_id}</Link>
 			</h1>
 			<form onSubmit={submitData}>
 				<div className="text-center flex flex-col w-1/2 m-auto gap-1">
@@ -69,33 +61,33 @@ export default function RequestPage(data: RequestPageProps) {
 					<input
 						className="input input-bordered w-full"
 						type="text"
-						name="projectID"
+						name="project_id"
 						placeholder="Project ID"
-						value={requestDataState.projectID}
+						value={requestDataState.project_id}
 						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
-						name="accountName"
+						name="account_name"
 						placeholder="Account Name"
-						value={requestDataState.accountName}
+						value={requestDataState.account_name}
 						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="text"
 						placeholder="Billing Code"
-						name="billingCode"
-						value={requestDataState.billingCode || ''}
+						name="wbs"
+						value={requestDataState.wbs || ''}
 						onChange={handleChange}
 					/>
 					<input
 						className="input input-bordered w-full"
 						type="number"
-						name="totalHours"
+						name="total_hours_spent"
 						placeholder="Total Hours Worked"
-						value={requestDataState.totalHours}
+						value={requestDataState.total_hours_spent}
 						onChange={handleChange}
 					/>
 					<div className="flex flex-row gap-1">
@@ -116,8 +108,8 @@ export default function RequestPage(data: RequestPageProps) {
 						<select
 							onChange={handleChange}
 							className="flex-grow w-auto"
-							name="requestType"
-							value={requestDataState.requestType}>
+							name="request_type"
+							value={requestDataState.request_type}>
 							<option value="0" disabled>
 								Select a request type
 							</option>
@@ -130,8 +122,8 @@ export default function RequestPage(data: RequestPageProps) {
 						<select
 							onChange={handleChange}
 							className="flex-grow w-auto"
-							name="legacyOrg"
-							value={requestDataState.legacyOrg}>
+							name="legacy_org"
+							value={requestDataState.legacy_org}>
 							<option value="0" disabled>
 								Select Legacy Org
 							</option>
@@ -142,9 +134,9 @@ export default function RequestPage(data: RequestPageProps) {
 					<textarea
 						className="textarea textarea-bordered"
 						placeholder="Comments"
-						name="comments"
+						name="comment"
 						onChange={handleChange}
-						value={requestDataState.comments}
+						value={requestDataState.comment}
 					/>
 					<label>Created at: {data.created_at.toString()}</label>
 					<label>Last Updated: {data.last_updated.toString()}</label>

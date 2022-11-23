@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {FaEdit, FaEye} from 'react-icons/fa';
-import prisma from '@/utils/prisma;
+import prisma from '@/utils/prisma';
 
 export default function UsersPage({data}: any) {
 	if (!data.length) {

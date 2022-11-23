@@ -19,7 +19,7 @@ export interface RequestPageProps {
 	account_name: string;
 	status: string;
 	request_type: string;
-	billing_code: string | null;
+	wbs: string | null;
 	legacy_org: string;
 	total_hours_spent: number;
 	comment: string;
