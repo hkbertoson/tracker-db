@@ -25,7 +25,6 @@ export interface RequestPageProps {
 	comment: string;
 	last_updated: string;
 }
-
 export interface MainPageProps {
 	title: string;
 	url: URL | string;

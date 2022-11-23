@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import {MainPageProps} from '@/utils/types';
-
 export default function MainButton() {
 	return (
 		<div className="flex flex-row gap-2 items-center mt-1">
