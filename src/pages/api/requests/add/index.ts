@@ -5,8 +5,17 @@ export default async function handle(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const {name, projectID, accountName, status, requestType, totalHours} =
-		req.body;
+	const {
+		name,
+		projectID,
+		accountName,
+		status,
+		requestType,
+		totalHours,
+		legacyOrg,
+		comments,
+		billingCode,
+	} = req.body;
 	const result = await prisma.requests.create({
 		data: {
 			name: name,
@@ -15,6 +24,9 @@ export default async function handle(
 			status: status,
 			request_type: requestType,
 			total_hours_spent: totalHours,
+			legacy_org: legacyOrg,
+			comment: comments,
+			wbs: billingCode,
 		},
 	});
 	res.json(result);

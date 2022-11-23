@@ -1,7 +1,7 @@
 import prisma from '@/utils/prisma';
 import {RequestPageProps} from '@/utils/types';
 import Link from 'next/link';
-import {AddButton, HomeButton, BackButton} from '@/components/Buttons';
+// import {AddButton, HomeButton, BackButton} from '@/components/Buttons';
 import {Header} from '@/components/Header';
 
 export default function RequestPage(data: RequestPageProps) {

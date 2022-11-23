@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {requestValues, statusValues} from '@/utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
-import {AddButton, BackButton, HomeButton} from '@/components/Buttons';
+import MainButton from '@/components/Buttons/MainButton';
 
 const AddRequest = () => {
 	const initialRequestState = {
 		name: '',
 		projectID: '',
 		accountName: '',
-		status: 'DEFAULT',
-		requestType: 'DEFAULT',
+		status: '0',
+		requestType: '0',
 		billingCode: '',
-		legacyOrg: 'DEFAULT',
+		legacyOrg: '0',
 		comments: '',
 		totalHours: '',
 	};
@@ -26,24 +26,13 @@ const AddRequest = () => {
 	const submitData = async (e: any) => {
 		e.preventDefault();
 		try {
-			const data2 = {...requestDataState};
-			console.log(data2);
-			// const data = {
-			// 	name,
-			// 	projectID,
-			// 	accountName,
-			// 	status,
-			// 	requestType,
-			// 	totalHours,
-			// 	billingCode,
-			// 	legacyOrg,
-			// };
-			// await fetch('/api/requests/add', {
-			// 	method: 'POST',
-			// 	headers: {'Content-Type': 'application/json'},
-			// 	body: JSON.stringify(data),
-			// });
-			// await Router.push('/requests');
+			const data = {...requestDataState};
+			await fetch('/api/requests/add', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(data),
+			});
+			await Router.push('/requests');
 		} catch (error) {
 			console.log(error);
 		}
@@ -99,10 +88,11 @@ const AddRequest = () => {
 						<select
 							onChange={handleChange}
 							className="flex-grow w-auto"
+							name="status"
 							value={requestDataState.status}>
-							{/* <option value="DEFAULT" disabled>
+							<option value="0" disabled>
 								Select Request Status
-							</option> */}
+							</option>
 							{statusValues.map((type) => (
 								<option key={type.name} value={type.value}>
 									{type.value}
@@ -112,8 +102,9 @@ const AddRequest = () => {
 						<select
 							onChange={handleChange}
 							className="flex-grow w-auto"
+							name="requestType"
 							value={requestDataState.requestType}>
-							<option value="DEFAULT" disabled>
+							<option value="0" disabled>
 								Select a request type
 							</option>
 							{requestValues.map((type) => (
@@ -125,8 +116,9 @@ const AddRequest = () => {
 						<select
 							onChange={handleChange}
 							className="flex-grow w-auto"
+							name="legacyOrg"
 							value={requestDataState.legacyOrg}>
-							<option value="DEFAULT" disabled>
+							<option value="0" disabled>
 								Select Legacy Org
 							</option>
 							<option value="CSC">CSC</option>
@@ -143,13 +135,7 @@ const AddRequest = () => {
 				</div>
 
 				<div className="flex gap-1 justify-center">
-					<HomeButton url="/" title="Home" />
-					<BackButton url="/requests" title="Back" />
-					<button
-						className="btn btn-primary rounded-full text-lg pl-5"
-						type="submit">
-						Submit
-					</button>
+					<MainButton />
 				</div>
 			</form>
 		</>

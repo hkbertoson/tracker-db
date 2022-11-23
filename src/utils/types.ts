@@ -1,8 +1,8 @@
 export const requestValues = [
 	{value: 'Rem', name: 'Rem'},
-	{label: 'Add On', name: 'Add'},
-	{label: 'Migration', name: 'Migration'},
-	{label: 'New Logo', name: 'Logo'},
+	{value: 'Add On', name: 'Add'},
+	{value: 'Migration', name: 'Migration'},
+	{value: 'New Logo', name: 'Logo'},
 ];
 
 export const statusValues = [
