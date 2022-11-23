@@ -4,7 +4,6 @@ import {
 	statusValues,
 	SelectChangeEventHandler,
 } from '@/utils/types';
-import RequestReducer from '@/utils/hooks/requestReducer';
 import Router from 'next/router';
 import Link from 'next/link';
 import {AddButton, BackButton, HomeButton} from '@/components/Buttons';
@@ -20,19 +19,7 @@ const AddRequest = () => {
 		legacyOrg: '',
 		totalHours: 0,
 	};
-	const [request, dispatch] = useReducer(RequestReducer, initialRequestState);
-
-	const handleTextChange = (e: any) => {
-		dispatch({
-			type: 'HANDLE INPUT TEXT',
-			field: e.target.name,
-			payload: e.target.value,
-		});
-	};
-	const [status, setStatus] = useState('');
-	const [requestType, setRequestType] = useState('');
-	const [legacyOrg, setLegacyOrg] = useState('');
-	// const [totalHours, setTotalHours] = useState(0);
+	const [requestData, setRequestData] = useState(initialRequestState);
 
 	const submitData = async (e: any) => {
 		e.preventDefault();
@@ -87,7 +74,7 @@ const AddRequest = () => {
 						placeholder="Name"
 						name="name"
 						onChange={(e) => {
-							handleTextChange(e);
+							setRequestData(e.target.value);
 						}}
 					/>
 					<input

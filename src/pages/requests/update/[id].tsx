@@ -1,10 +1,10 @@
-import prisma from '../../../utils/prisma';
+import prisma from '@/utils/prisma';
 import {
 	requestValues,
 	SelectChangeEventHandler,
 	statusValues,
 	RequestPageProps,
-} from '../@/utils/types';
+} from '@/utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
@@ -55,7 +55,9 @@ export default function RequestPage(data: RequestPageProps) {
 	return (
 		<>
 			<h1 className="text-3xl text-center">
-				<Link href="/">{data.project_id}</Link>
+				<Link href="/" legacyBehavior>
+					{data.project_id}
+				</Link>
 			</h1>
 			<form onSubmit={submitData}>
 				<div className="text-center flex flex-col w-1/2 m-auto gap-1">
@@ -159,11 +161,15 @@ export default function RequestPage(data: RequestPageProps) {
 						type="submit">
 						Submit
 					</button>
-					<Link href="/">
-						<a className="btn btn-secondary rounded-full text-lg pl-5">Home</a>
+					<Link
+						href="/"
+						className="btn btn-secondary rounded-full text-lg pl-5">
+						Home
 					</Link>
-					<Link href="/requests">
-						<a className="btn btn-warning rounded-full text-lg pl-5">Back</a>
+					<Link
+						href="/requests"
+						className="btn btn-warning rounded-full text-lg pl-5">
+						Back
 					</Link>
 				</div>
 			</form>

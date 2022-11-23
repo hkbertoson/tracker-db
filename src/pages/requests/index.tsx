@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import prisma from '../../utils/prisma';
+import prisma from '@/utils/prisma';
 import {FaEye, FaEdit} from 'react-icons/fa';
 import {RequestData} from '@/utils/types';
 import {Button} from '@/components/MainPage';
@@ -30,12 +30,20 @@ const RequestPage = ({data}: any) => {
 							<p>Status: {request.status}</p>
 						</div>
 						<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
-							<Link href={`/requests/update/${request.id}`}>
+							<Link
+								href={{
+									pathname: '/requests/update/[id]',
+									query: {id: `${request.id}`},
+								}}>
 								<FaEdit />
 							</Link>
 						</div>
 						<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
-							<Link href={`/requests/view/${request.id}`}>
+							<Link
+								href={{
+									pathname: '/requests/view/[id]',
+									query: {id: `${request.id}`},
+								}}>
 								<FaEye />
 							</Link>
 						</div>
