@@ -1,10 +1,5 @@
 import prisma from '@/utils/prisma';
-import {
-	requestValues,
-	SelectChangeEventHandler,
-	statusValues,
-	RequestPageProps,
-} from '@/utils/types';
+import {requestValues, statusValues, RequestPageProps} from '@/utils/types';
 import Link from 'next/link';
 import Router from 'next/router';
 import {useState} from 'react';
@@ -20,14 +15,6 @@ export default function RequestPage(data: RequestPageProps) {
 	const [legacyOrg, setLegacyOrg] = useState(data.legacy_org);
 	const [comment, setComment] = useState(data.comment);
 	const requestID = data.id;
-
-	const updateHours = (e: any) => {
-		setTotalHours(parseInt(e.currentTarget.value));
-	};
-
-	const updateLegacyOrg: SelectChangeEventHandler = (event) => {
-		setLegacyOrg(event.currentTarget.value);
-	};
 
 	const submitData = async (e: any) => {
 		e.preventDefault();
@@ -101,7 +88,6 @@ export default function RequestPage(data: RequestPageProps) {
 						className="input input-bordered w-full"
 						type="text"
 						placeholder="Total Hours Worked"
-						onChange={updateHours}
 						value={total_hours_spent}
 					/>
 					<div className="form-control grid grid-cols-3 gap-2">
