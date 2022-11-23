@@ -24,6 +24,7 @@ export interface RequestPageProps {
 	total_hours_spent: number;
 	comment: string;
 	last_updated: string;
+	created_at: string;
 }
 export interface MainPageProps {
 	title: string;
