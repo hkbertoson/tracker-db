@@ -3,10 +3,15 @@ import {requestValues, statusValues} from '@/utils/types';
 import Router from 'next/router';
 import Link from 'next/link';
 import MainButton from '@/components/Buttons/MainButton';
+import prisma from '@/utils/prisma';
 
-const AddRequest = () => {
+type UserData = {
+	name: string;
+};
+
+const AddRequest = (data: UserData) => {
 	const initialRequestState = {
-		name: '',
+		name: '0',
 		projectID: '',
 		accountName: '',
 		status: '0',
@@ -45,6 +50,20 @@ const AddRequest = () => {
 			</h1>
 			<form onSubmit={submitData}>
 				<div className="text-center flex flex-col w-1/2 m-auto gap-1">
+					{/* <select
+						onChange={handleChange}
+						className="flex-grow w-auto"
+						name="name"
+						value={requestDataState.name}>
+						<option value="0" disabled>
+							Select Request Status
+						</option>
+						{data.map((name) => (
+							<option key={type.name} value={type.value}>
+								{type.value}
+							</option>
+						))}
+					</select> */}
 					<input
 						className="input input-bordered w-full"
 						type="text"
@@ -142,3 +161,10 @@ const AddRequest = () => {
 	);
 };
 export default AddRequest;
+
+export async function getServerSideProps() {
+	const data = await prisma.users.findMany();
+	return {
+		props: {data},
+	};
+}
