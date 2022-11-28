@@ -20,7 +20,7 @@ const RequestPage = ({data}: any) => {
 			<div className="grid grid-cols-4 gap-3 mt-5">
 				{data.map((request: RequestData) => (
 					<div
-						className="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md"
+						className="p-6 max-w-sm bg-slate-100 rounded-lg border border-gray-200 shadow-md"
 						key={request.id}>
 						<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
 							{request.project_id}
@@ -29,23 +29,25 @@ const RequestPage = ({data}: any) => {
 							<p>Account Name: {request.account_name}</p>
 							<p>Status: {request.status}</p>
 						</div>
-						<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
-							<Link
-								href={{
-									pathname: '/requests/update/[id]',
-									query: {id: `${request.id}`},
-								}}>
-								<FaEdit />
-							</Link>
-						</div>
-						<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
-							<Link
-								href={{
-									pathname: '/requests/view/[id]',
-									query: {id: `${request.id}`},
-								}}>
-								<FaEye />
-							</Link>
+						<div className="flex gap-1 justify-center">
+							<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
+								<Link
+									href={{
+										pathname: '/requests/update/[id]',
+										query: {id: `${request.id}`},
+									}}>
+									<FaEdit />
+								</Link>
+							</div>
+							<div className="inline-flex items-center py-2 px-3 text-white rounded-lg hover:bg-blue-800 bg-blue-600 cursor-pointer">
+								<Link
+									href={{
+										pathname: '/requests/view/[id]',
+										query: {id: `${request.id}`},
+									}}>
+									<FaEye />
+								</Link>
+							</div>
 						</div>
 					</div>
 				))}
