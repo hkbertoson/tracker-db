@@ -20,36 +20,36 @@ export default function UsersPage({data}: any) {
 			<h1 className="text-center text-4xl">
 				<Link href="/">Users</Link>
 			</h1>
-			<div className="overflow-x-auto">
-				<table className="table w-full">
-					<thead>
-						<tr>
-							<th></th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>EID</th>
-							<th>Legacy Org</th>
-							<th>Cost Center</th>
-							<th>Profit Center</th>
-							<th>Phone Number</th>
+			{/* <div className="overflow-x-auto"> */}
+			<table className="table-auto">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>EID</th>
+						<th>Legacy Org</th>
+						<th>Cost Center</th>
+						<th>Profit Center</th>
+						<th>Phone Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					{data.map((user: any) => (
+						<tr key={user.id}>
+							<th>{user.id}</th>
+							<td>{user.name}</td>
+							<td>{user.email}</td>
+							<td>{user.eid}</td>
+							<td>{user.legacy_org}</td>
+							<td>{user.cost_center}</td>
+							<td>{user.profit_center}</td>
+							<td>{user.phone_number}</td>
 						</tr>
-					</thead>
-					<tbody>
-						{data.map((user: any) => (
-							<tr key={user.id}>
-								<th>{user.id}</th>
-								<td>{user.name}</td>
-								<td>{user.email}</td>
-								<td>{user.eid}</td>
-								<td>{user.legacy_org}</td>
-								<td>{user.cost_center}</td>
-								<td>{user.profit_center}</td>
-								<td>{user.phone_number}</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
+					))}
+				</tbody>
+			</table>
+			{/* </div> */}
 		</>
 	);
 }

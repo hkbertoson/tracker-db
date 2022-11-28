@@ -10,6 +10,7 @@ export const statusValues = [
 	{value: 'Completed', name: 'Complete'},
 	{value: 'Awaiting Customer Confirmation', name: 'Waiting'},
 	{value: 'Work in Progress', name: 'Progress'},
+	{value: 'Cancelled', name: 'Cancelled'},
 ];
 
 export interface RequestPageProps {
