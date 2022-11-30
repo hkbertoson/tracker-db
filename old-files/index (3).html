@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Polly Tester</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto+Mono" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="box">
+        <div class="waves">
+            <div class="wave one"></div>
+            <div class="wave two"></div>
+            <div class="wave three"></div>
+        </div>
+
+        <div class="main">
+            <header>
+                <h1>Polly Tester</h1>
+            </header>
+            <div><a class="info" target="_blank"
+                    href="https://docs.aws.amazon.com/polly/latest/dg/supportedtags.html">SSML Reference Guide.</a>
+            </div>
+
+
+            <form accept-charset="utf-8 8859-1">
+                <span class="error"></span>
+                <div>
+                    <textarea id="ipa-text" rows="5" cols="40"
+                        placeholder="<speak></speak>">&lt;speak&gt;&lt;/speak&gt;</textarea>
+                </div>
+
+                <div class="select">
+                    <label for="engine-select">TTS Engine:</label>
+                    <select style="width:300px;" id="engine-select">
+                        <option value="standard" selected>Standard</option>
+                        <option value="neural">Neural</option>
+                    </select>
+                </div>
+
+                <div class="select">
+                    <label for="engine-select">Voice:</label>
+                    <select style="width:300px;" id="polly-voice"></select>
+                </div>
+
+                <button id="submit" type="submit">Read</button>
+            </form>
+
+            <div class="audio">
+                <a href id="share" download="audio-file">Download MP3</a>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+</body>
+
+</html>
