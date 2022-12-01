@@ -9,6 +9,7 @@ function Home() {
 				<Button title="Add New Request" url="/requests/add" />
 				<Button title="Add New User" url="/users/add" />
 				<Button title="View All Users" url="/users" />
+				<Button title="Dashboard(Alpha)" url="/dashboard" />
 			</div>
 		</div>
 	);
