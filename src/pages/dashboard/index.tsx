@@ -1,62 +1,57 @@
-import React from 'react';
-import {
-	Chart as ChartJS,
-	LinearScale,
-	CategoryScale,
-	BarElement,
-	PointElement,
-	LineElement,
-	Legend,
-	Tooltip,
-	LineController,
-	BarController,
-} from 'chart.js';
-import {Chart} from 'react-chartjs-2';
-// import faker from 'faker';
-import {faker} from '@faker-js/faker';
-
-ChartJS.register(
-	LinearScale,
-	CategoryScale,
-	BarElement,
-	PointElement,
-	LineElement,
-	Legend,
-	Tooltip,
-	LineController,
-	BarController
-);
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-	labels,
-	datasets: [
-		{
-			type: 'line' as const,
-			label: 'Dataset 1',
-			borderColor: 'rgb(255, 99, 132)',
-			borderWidth: 2,
-			fill: false,
-			data: labels.map(() => faker.datatype.number({min: -1000, max: 1000})),
-		},
-		{
-			type: 'bar' as const,
-			label: 'Dataset 2',
-			backgroundColor: 'rgb(75, 192, 192)',
-			data: labels.map(() => faker.datatype.number({min: -1000, max: 1000})),
-			borderColor: 'white',
-			borderWidth: 2,
-		},
-		{
-			type: 'bar' as const,
-			label: 'Dataset 3',
-			backgroundColor: 'rgb(53, 162, 235)',
-			data: labels.map(() => faker.datatype.number({min: -1000, max: 1000})),
-		},
-	],
-};
-
+import Link from 'next/link';
 export default function Dashboard() {
-	return <Chart type="bar" data={data} />;
+	return (
+		<>
+			<div className="grid grid-cols-4 font-bold text-lg gap-4">
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/area">Area</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/bubble">Bubble</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/chart-events">Chart Events</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/chart-ref">Chart-ref</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/doughnut">Doughnut</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/grouped">Grouped</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/horizontal">Horizontal</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/line">Line</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/multiaxis">MultiAxis</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/multitype">MultiType</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/pie">Pie</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/polar">Polar</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/radar">Radar</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/scatter">Scatter</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/stacked">Stackeds</Link>
+				</button>
+				<button className="bg-blue-100 w-auto ">
+					<Link href="dashboard/vertical">Vertical</Link>
+				</button>
+			</div>
+		</>
+	);
 }
